@@ -1,3 +1,65 @@
+<head>
+        <!-- jQuery -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <!-- BEGIN TimelineJS -->
+        <script type="text/javascript" src="http://cdn.knightlab.com/libs/timeline/latest/js/storyjs-embed.js"></script>
+        <script>
+            $(document).ready(function() {
+               var dataObject = {
+    "timeline":
+    {
+        "headline":"A Legend is born",
+        "type":"default",
+        "text":"<p>Karthik Rajgopal is born to Laxmi Naarayanan and Chellam in Incredible India</p>",
+        "asset": {
+            "media":"images/karthik_rajgopal.jpg",
+            "credit":"Credit Name Goes Here",
+            "caption":"Caption text goes here"
+        },
+        "date": [
+            {
+                "startDate":"2011,12,10",
+                "endDate":"2011,12,11",
+                "headline":"Headline Goes Here",
+                "text":"<p>Body text goes here, some HTML is OK</p>",
+                "tag":"This is Optional",
+                "classname":"optionaluniqueclassnamecanbeaddedhere",
+                "asset": {
+                    "media":"http://twitter.com/ArjunaSoriano/status/164181156147900416",
+                    "thumbnail":"optional-32x32px.jpg",
+                    "credit":"Credit Name Goes Here",
+                    "caption":"Caption text goes here"
+                }
+            }
+        ],
+        "era": [
+            {
+                "startDate":"2011,12,10",
+                "endDate":"2011,12,11",
+                "headline":"Headline Goes Here",
+                "text":"<p>Body text goes here, some HTML is OK</p>",
+                "tag":"This is Optional"
+            }
+
+        ]
+    }
+}
+                createStoryJS({
+                    type:       'timeline',
+                    width:      '100%',
+                    height:     '600',
+                    source:     dataObject,
+                    embed_id:   'my-timeline'
+                });
+            });
+
+
+        </script>
+        <!-- END TimelineJS -->
+</head>
+<body>
+ <div id ="my-timeline"></div>
+</body>
 <template name="home">
   <div class="template-home">
     <div class="page-header">
@@ -6,5 +68,6 @@
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
+
   </div>
 </template>
