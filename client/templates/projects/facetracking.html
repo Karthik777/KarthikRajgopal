@@ -1,11 +1,24 @@
 <template name="facetracking">
-  <div class="demo-frame">
-    <div class="demo-container">
-      <video id="video" width="320" height="240" preload autoplay loop muted></video>
-      <canvas id="canvas" width="320" height="240"></canvas>
+  <div class="col s5">
+  <div class="card cardblocks">
+  <div id="videotracker" class="card-content">
+    <span class="card-title activator grey-text text-darken-4">Feature Recognition<i class="material-icons right center">more_vert</i></span>
+  </div>
+  <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="{{imageName}}">
+  </div>
+  <div id="stopTracker" class="card-reveal">
+    <span class="card-title grey-text text-darken-4">Blink to win<i class="material-icons right">close</i></span>
+    <div class="demo-frame">
+      <div class="demo-container">
+        <video id="video" width="600" height="350" preload autoplay loop muted></video>
+        <canvas id="canvas" width="600" height="350"></canvas>
+      </div>
+    </div>
+    <div>
+      <span id="blink" class="card-title activator grey-text text-darken-4">Blink Count : </span>
     </div>
   </div>
-  <div class ="text">
-    <label id="blink">Blink Count : </label>
-  </div>
+</div>
+</div>
 </template>

@@ -34,8 +34,8 @@ video, canvas {
   background: url(frame.png) no-repeat;
   /*width: 854px;
   height: 658px;*/
-  width: 320px;
-  height: 240px;
+  width: 600px;
+  height: 350px;
   /*position: fixed;*/
   top: 50%;
   left: 50%;
@@ -56,6 +56,11 @@ video, canvas {
   overflow: hidden;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+}
+
+.cardblocks
+{
+  height: 500px;
 }
 
 .dg.ac {

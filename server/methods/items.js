@@ -1,5 +1,10 @@
 Meteor.methods({
-  'Items.insert': function (params) {
-    Items.insert(params);
+  'Messages.insert': function (params) {
+    Messages.insert(params);
+  },
+  'Sendchat': function (url,params) {
+            this.unblock();
+            return Meteor.http.call("GET", url,{data: params});
   }
+
 });

@@ -1,43 +1,36 @@
-<!-- <template name="chatbot">
-  <div id="room-chat">
-			<div class="room-image" style="background-image:url({{roomImage}});"></div>
-			<div class="room-users">
-				<ul class="user-list pull-right">
-					<li class="user-count">
-						<span class="glyphicon glyphicon-user"></span>
-						<span class="count">{{roomUserCount}}</span>
-					</li>
-				</ul>
-			</div>
-			<form id="sendMessage">
-				<img src="/topic-50.png" class="message-icon">
-				<input type="text" placeholder="Write your message...">
-				<button type="submit">
-					<span class="glyphicon glyphicon-send"></span>
-				</button>
-			</form>
+<template name="chatbot">
+  <div id="room-chat" class="col s5">
+			<!-- <div class="room-image" style="background-image:url({{roomImage}});"></div> -->
+      <div class="card cardblocks">
+        <div id="chatbot" class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Eva Time<i class="material-icons right center">more_vert</i></span>
+        </div>
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{imageName}}">
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+            <div class="card darken-1">
+              <div class="card-content white-text">
 
-			<div class="room-messages">
-				<ul class="message-list">
-					{{#each messageList}}
-						{{> messageItem}}
-					{{/each}}
-				</ul>
-			</div>
-		</div>
+                  <ul>
+                    <li>
+                      <div class="chip">
+                      <img src="{{imageName}}" alt="Contact Person">
+                      You may chat to me now.
+                      </div>
+                  	</li>
+                  </ul>
+
+              </div>
+              <div class="card-action">
+                <!-- <img src="/topic-50.png" class="message-icon"> -->
+                <input class="chattext" type="text" placeholder="Write your message...">
+                <a class="btn-floating btn-large waves-effect waves-light red sendmessage"><i class="material-icons right">add</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+
 </template>
-
-<template name="messageItem">
-	<li class="{{#if mine}}my-message{{/if}} {{#if isActivityMessage}}activity-message{{/if}}" data-user-id="{{#unless isActivityMessage}} {{user._id}} {{/unless}}">
-		{{#if isActivityMessage}}
-			{{{activityText}}}
-		{{else}}
-			<div class="text">{{text}}</div>
-			<div class="info">
-				<img src="{{user.avatar}}" class="avatar">
-				<strong>{{user.name}}</strong>
-				<em class="time">{{timeFormat createdAt}}</em>
-			</div>
-		{{/if}}
-	</li>
-</template> -->
