@@ -1,21 +1,3 @@
-Template.messageItem.helpers({
-	activityText: function(){
-		var user = Meteor.users.findOne({_id: this.user_id});
-		if ( this.activityType == 'join' ) {
-			return '<strong>'+user.name+'</strong> has joined the room.';
-		} else if ( this.activityType == 'leave' ) {
-			return '<strong>'+user.name+'</strong> has left the room.';
-		} else if ( this.activityType == 'addVideo' ) {
-			var video = Videos.findOne({_id: this.video_id});
-			return '<strong>'+user.name+'</strong> has added <strong>"'+video.title+'"</strong> to the playlist.';
-		}
-	},
-	timeFormat: function(timestamp){
-		return moment(timestamp).format('HH:mm');
-	}
-})
-
-
 Template.chatbot.helpers({
   imageName: function(){
     return "images/eva.jpg";
@@ -24,14 +6,29 @@ Template.chatbot.helpers({
 		return Messages.find();
 	}
 });
+function encompassmessage(name,message)
+{
+	if(name === 'eva')
+	{
+		return	'<span class="black-text text-darken-2">'+message+'</span>';
 
+	}
+	else {
+		return '<span class="blue-text text-darken-2">'+message+'</span>'
+	}
+}
+
+function getListTemplate(name,imageName,message,direction)
+{
+
+	return '<li class=""><div class="chip avatar">'+
+	'<img src="'+imageName+'" alt="'+name+'"></div>'+encompassmessage(name,message)+'</li>'
+}
 Template.chatbot.events({
 	"click #room-chat .sendmessage": function(event, template){
 		 event.preventDefault();
 		 var message = $('#room-chat input.chattext').val();
-		 var data = {name:'eva',imagepath:'images/captainfalcon.jpg',message:message};
-		 var template = ""
-     $('#room-chat .card-content ul').append()
+	   $('#room-chat .card-content ul').append(getListTemplate('human','images/captainfalcon.jpg',message,'left'));
 		 var params = {message : $('#room-chat input.chattext').val()};
 		 var url = "http://127.0.0.1:5000/eva/chat";
 		Meteor.call("Sendchat",url, params, function(error, result){
@@ -40,9 +37,8 @@ Template.chatbot.events({
 		 	}
 		 	if(result){
 				console.log(result);
-				result = EJSON.parse(result.content);
-				var response = {name:'eva',imagepath:'images/eva.jpg',message:result['message']};
-		 		Meteor.call("Messages.insert",response);
+				var response = EJSON.parse(result.content);
+				$('#room-chat .card-content ul').append(getListTemplate('eva','images/eva.jpg',response['message'],'right'));
 		 	}
 		 });
 	},
@@ -50,15 +46,3 @@ Template.chatbot.events({
 		 event.preventDefault();
 	},
 });
-
-Template.messageItem.rendered = function(){
-	var messagesContainer = $('.room-messages');
-	messagesContainer.scrollTop(messagesContainer.prop('scrollHeight'));
-
-	$('.message-list li').each(function(){
-		var user_id = $(this).attr('data-user-id');
-		if ( user_id && $(this).prev().attr('data-user-id') == user_id ) {
-			$(this).prev().addClass('hide-info');
-		}
-	});
-}
